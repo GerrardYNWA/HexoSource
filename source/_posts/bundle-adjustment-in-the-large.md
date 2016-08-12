@@ -3,9 +3,12 @@ date: 2016-08-09 19:04:03
 categories: Translation
 tags: [computer vision]
 ---
-> **Abstract.** 我们展示了设计和应用针对成千上万张图像的大规模BA问题，提出了一种新的不精确性牛顿方法。我们探索了利用共轭梯度求解牛顿法和它的性能作为一些简单且计算高效的预条件子的函数。我们显示普通的Schur complement trick并不局限于基于因式分解的方法，他也可以演绎为一种预处理的形式。利用街景图像数据集和若干社交图像集，我们产生了各种各样的BA问题，利用它们去评估了六种不同BA算法的性能。我们的实验表明，不精确性牛顿法，结合一些相对简单地预条件子时，在处理大规模的BA时，会带来最优的性能。相关代码、测试用例和具体的评测数据都可以在[http://grail.cs.washington.edu/projects/bal](http://grail.cs.washington.edu/projects/bal)上获取到。
+
+　　初步简略翻译中，稍后订正，未完待续...
 
 <!--more-->
+
+> **Abstract.** 我们展示了设计和应用针对成千上万张图像的大规模BA问题，提出了一种新的不精确性牛顿方法。我们探索了利用共轭梯度求解牛顿法和它的性能作为一些简单且计算高效的预条件子的函数。我们显示普通的Schur complement trick并不局限于基于因式分解的方法，他也可以演绎为一种预处理的形式。利用街景图像数据集和若干社交图像集，我们产生了各种各样的BA问题，利用它们去评估了六种不同BA算法的性能。我们的实验表明，不精确性牛顿法，结合一些相对简单地预条件子时，在处理大规模的BA时，会带来最优的性能。相关代码、测试用例和具体的评测数据都可以在[http://grail.cs.washington.edu/projects/bal](http://grail.cs.washington.edu/projects/bal)上获取到。
 
 > **Key words:** Structure from Motion, Bundle Adjustment, Preconditioned Conjugate Gradients
 
@@ -33,3 +36,11 @@ tags: [computer vision]
 ---
 
 ### **2 Bundle Adjustment**
+
+　　给定一系列测量好的图像特征点坐标和对应点坐标，BA的目标就是去寻找到3D点坐标和相机参数，来最小化投影误差。这个优化问题通常可以描述为一个非线性最小二乘问题，这里的误差就是在观测的特征点坐标和相机图像平面的3D点坐标之间的差的二次L2范式。然而，我们并不局限于去利用L2范式；甚至当Huber's范式这样的鲁棒的损失函数被使用时，这个问题可以被转换为再加权的非线性最小二乘问题。因此下文中我们将利用这个术语bundle adjustment(BA)去替代特定的非线性最小二乘问题。
+
+##### **2.1 Levenberg Marquardt Algorithm**
+
+　　Levenberg Marquardt(LM)算法[11]是最流行的解决非线性最小二乘问题的算法，也是BA问题的可选算法。在本节中，我们开始简单回顾一下LM算法，然后去描述在BA问题中能大幅度地降低LM算法的Schur complement trick。读者感兴趣的话，在文献[11-14]这些优秀的参考资料中有关于LM算法更多的细节。
+
+　　让
